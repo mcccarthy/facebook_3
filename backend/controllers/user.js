@@ -4,6 +4,7 @@ const {
   validateUsername,
 } = require("../helpers/validation");
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../helpers/tokens");
 const { sendVerificationEmail } = require("../helpers/mailer");
@@ -80,9 +81,24 @@ exports.register = async (req, res) => {
       last_name: user.last_name,
       token: token,
       verified: user.verified,
-      message: "Register Success ! please activate your email to start",
+      message: "Register Success! Please verify your email address...",
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+exports.activateAccount = (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    return res.status(400).json({ message: "Token is required" });
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(user);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
