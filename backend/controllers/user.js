@@ -68,11 +68,12 @@ exports.register = async (req, res) => {
     }).save();
     const emailVerificationToken = generateToken(
       { id: user._id.toString() },
-      "30m"
+      "3h"
     );
     const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
     sendVerificationEmail(user.email, user.first_name, url);
     const token = generateToken({ id: user._id.toString() }, "7d");
+
     res.send({
       id: user._id,
       username: user.username,
@@ -82,12 +83,13 @@ exports.register = async (req, res) => {
       token: token,
       verified: user.verified,
       message: "Register Success! Please verify your email address...",
+
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-exports.activateAccount = (req, res) => {
+exports.activateAccount = async (req, res) => {
   const { token } = req.body;
 
   if (!token) {
@@ -96,8 +98,15 @@ exports.activateAccount = (req, res) => {
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(user);
+    const check = await User.findById(user.id);
 
+    if (check.verified) {
+      return res.status(400).json({ message: "Account already verified" });
+    } else {
+      await User.findByIdAndUpdate(user.id, { verified: true });
+      res.status(200).json({ message: "Account verified successfully" });
+
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
