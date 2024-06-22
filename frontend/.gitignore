@@ -21,11 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-
-# Ignore .env file in the root directory
-.env
-
-# Ignore .env files in specific directories
-frontend/.env
-backend/.env
