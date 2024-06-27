@@ -131,11 +131,11 @@ export default function RegisterForm({ setVisible }) {
             let noMoreThan70 = new Date(1970 + 70, 0, 1);
             if (current_date - picked_date < atleast14) {
               setDateError(
-                "it looks like you(ve enetered the wrong info.Please make sure that you use your real date of birth."
+                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
               );
             } else if (current_date - picked_date > noMoreThan70) {
               setDateError(
-                "it looks like you(ve enetered the wrong info.Please make sure that you use your real date of birth."
+                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
               );
             } else if (gender === "") {
               setDateError("");
@@ -154,13 +154,13 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="First name"
+                  placeholder="First Name"
                   name="first_name"
                   onChange={handleRegisterChange}
                 />
                 <RegisterInput
                   type="text"
-                  placeholder="Surname"
+                  placeholder="Last Name"
                   name="last_name"
                   onChange={handleRegisterChange}
                 />
@@ -168,7 +168,7 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="Mobile number or email address"
+                  placeholder="Mobile Number or Email Address"
                   name="email"
                   onChange={handleRegisterChange}
                 />
@@ -176,7 +176,7 @@ export default function RegisterForm({ setVisible }) {
               <div className="reg_line">
                 <RegisterInput
                   type="password"
-                  placeholder="New password"
+                  placeholder="New Password"
                   name="password"
                   onChange={handleRegisterChange}
                 />
