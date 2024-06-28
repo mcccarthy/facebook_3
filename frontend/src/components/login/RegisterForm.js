@@ -131,11 +131,11 @@ export default function RegisterForm({ setVisible }) {
             let noMoreThan70 = new Date(1970 + 70, 0, 1);
             if (current_date - picked_date < atleast14) {
               setDateError(
-                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
+                "it looks like you've entered the wrong info. Please make sure that you use your real date of birth."
               );
             } else if (current_date - picked_date > noMoreThan70) {
               setDateError(
-                "it looks like you've entered the wrong info.Please make sure that you use your real date of birth."
+                "it looks like you've entered the wrong info. Please make sure that you use your real date of birth."
               );
             } else if (gender === "") {
               setDateError("");
