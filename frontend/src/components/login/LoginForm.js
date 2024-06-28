@@ -51,7 +51,7 @@ export default function LoginForm({ setVisible }) {
   return (
     <div className="login_wrap">
       <div className="login_1">
-        <img src="../../icons/logo-no-background.svg" alt="" />
+        <img src="../../icons/buzzcircle-high-resolution-logo-transparent.svg" alt="" />
         <span>
           <span className="font">BuzzCircle</span> helps you connect and share with the people you love.  &#9829;
         </span>

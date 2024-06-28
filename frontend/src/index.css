@@ -34,7 +34,8 @@ a {
 	--dark-color-primary: #242526;
 	--dark-color-secondary: #b0b3b8;
 	--blue-color: #007bff;
-	--green-color: #42b72a;
+	/* --green-color: #42b72a; */
+	--green-color: #bf2295;
 	--light-blue-color: #e7f3ff;
 	--border-color: #ccced2;
 	--shadow-1: rgba(0, 0, 0, 0.2);
